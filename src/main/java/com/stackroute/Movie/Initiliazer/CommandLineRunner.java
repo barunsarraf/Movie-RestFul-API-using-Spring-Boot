@@ -21,8 +21,9 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
     public void run(String... args) throws Exception {
         System.out.println("this is via command line runner");
         try {
-            Movie movie= new Movie(6,"CommandLineRunner Mission Impossible","Tom Cruise","Action",new BigDecimal(1000),"Wednesday 2018");
+            Movie movie= new Movie(2,"CommandLineRunner Mission Impossible","Tom Cruise","Action",new BigDecimal(1000),"Wednesday 2018");
             movieService.saveMovie(movie);
+
         } catch (MovieNotFoundException e) {
             e.printStackTrace();
         }

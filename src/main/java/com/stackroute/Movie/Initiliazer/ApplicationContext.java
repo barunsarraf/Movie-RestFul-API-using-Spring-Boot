@@ -3,7 +3,7 @@ package com.stackroute.Movie.Initiliazer;
 import com.stackroute.Movie.Exception.MovieNotFoundException;
 import com.stackroute.Movie.model.Movie;
 import com.stackroute.Movie.service.MovieService;
-import com.stackroute.Movie.service.MovieServiceImpl;
+//import com.stackroute.Movie.service.MovieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,7 +71,7 @@ public class ApplicationContext implements ApplicationListener<ContextRefreshedE
         System.out.println("This is via Application Context");
 
         try {
-            Movie movie= new Movie(5,"Application Mission Impossible","Tom Cruise","Action",new BigDecimal(1000),"Wednesday 2018");
+            Movie movie= new Movie(1,"Application Mission Impossible","Tom Cruise","Action",new BigDecimal(1000),"Wednesday 2018");
             movieService.saveMovie(movie);
         } catch (MovieNotFoundException e) {
             e.printStackTrace();

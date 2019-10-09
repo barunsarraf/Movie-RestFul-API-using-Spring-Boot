@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="1ae40109-a608-4b07-bc28-ec4e97dc0bd6">
-        <schema name="Movie" object-types="constraint, column, index, table, dataset trigger" />
+        <schema name="Movie" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
