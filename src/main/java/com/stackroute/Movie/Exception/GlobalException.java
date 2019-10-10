@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class GlobalException extends ResponseEntityExceptionHandler{
 
-    @ExceptionHandler(MovieNotFoundException.class)
+    @ExceptionHandler(MovieAlreadyFoundException.class)
     public ResponseEntity<?> handlingalreadyexistmovie()
     {
         ResponseEntity responseEntity;

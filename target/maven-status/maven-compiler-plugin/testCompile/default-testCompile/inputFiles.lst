@@ -1,0 +1,4 @@
+/home/cgi/Desktop/SPRING/Movie/src/test/java/com/stackroute/Movie/SpringBootTestApplicationTests.java
+/home/cgi/Desktop/SPRING/Movie/src/test/java/com/stackroute/Movie/controller/MovieControllerTest.java
+/home/cgi/Desktop/SPRING/Movie/src/test/java/com/stackroute/Movie/repository/MovieMongoRepositoryTest.java
+/home/cgi/Desktop/SPRING/Movie/src/test/java/com/stackroute/Movie/service/MovieMongoServiceImplTest.java

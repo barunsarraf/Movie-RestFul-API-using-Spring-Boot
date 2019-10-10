@@ -1,11 +1,12 @@
 package com.stackroute.Movie.service;
 
-import com.stackroute.Movie.Exception.MovieNotFoundException;
+import com.stackroute.Movie.Exception.MovieAlreadyFoundException;
 import com.stackroute.Movie.model.Movie;
 import com.stackroute.Movie.repository.MovieMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,13 +27,13 @@ public class MovieMongoServiceImpl implements MovieService {
 
 
     @Override
-    public Movie saveMovie(Movie movie) throws MovieNotFoundException {
+    public Movie saveMovie(Movie movie) throws MovieAlreadyFoundException {
 
         System.out.println("this is save method in movie service impl");
         Optional option = movieMongoRepository.findById(movie.getMovieId());
         if(option.isPresent())
         {
-            throw new MovieNotFoundException("Movie already present with this id");
+            throw new MovieAlreadyFoundException("Movie already present with this id");
         }
         else
         {
@@ -57,7 +58,7 @@ public class MovieMongoServiceImpl implements MovieService {
     }*/
 
     @Override
-    public Movie updateMovieusingput(Movie movie) throws MovieNotFoundException {
+    public Movie updateMovieusingput(Movie movie) throws MovieAlreadyFoundException {
         if(movieMongoRepository.existsById(movie.getMovieId()))
         {
             movieMongoRepository.save(movie);
@@ -65,7 +66,7 @@ public class MovieMongoServiceImpl implements MovieService {
         }
         else
         {
-            throw new MovieNotFoundException("Movie is not present with this id");
+            throw new MovieAlreadyFoundException("Movie is not present with this id");
         }
 
     }

@@ -1,19 +1,14 @@
 package com.stackroute.Movie.Initiliazer;
 
-import com.stackroute.Movie.Exception.MovieNotFoundException;
+import com.stackroute.Movie.Exception.MovieAlreadyFoundException;
 import com.stackroute.Movie.model.Movie;
 import com.stackroute.Movie.service.MovieService;
 //import com.stackroute.Movie.service.MovieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-import org.springframework.core.env.Environment;
 
 import java.math.BigDecimal;
 
@@ -73,7 +68,7 @@ public class ApplicationContext implements ApplicationListener<ContextRefreshedE
         try {
             Movie movie= new Movie(1,"Application Mission Impossible","Tom Cruise","Action",new BigDecimal(1000),"Wednesday 2018");
             movieService.saveMovie(movie);
-        } catch (MovieNotFoundException e) {
+        } catch (MovieAlreadyFoundException e) {
             e.printStackTrace();
         }
 
@@ -81,7 +76,7 @@ public class ApplicationContext implements ApplicationListener<ContextRefreshedE
        /* try {
             Movie movie= new Movie(Integer.parseInt(environment.getProperty("movieid1")),environment.getProperty("moviename"),environment.getProperty("moviecast"),environment.getProperty("moviegenre"), new BigDecimal(Integer.parseInt(environment.getProperty("moviebudget"))),environment.getProperty("moviedate"));
             movieService.saveMovie(movie);
-        } catch (MovieNotFoundException e) {
+        } catch (MovieAlreadyFoundException e) {
             e.printStackTrace();
         }*/
 
@@ -91,7 +86,7 @@ public class ApplicationContext implements ApplicationListener<ContextRefreshedE
      /*   try {
             Movie movie= new Movie(movieid1,moviename,moviecast,moviegenre,moviebudget,moviedate);
             movieService.saveMovie(movie);
-        } catch (MovieNotFoundException e) {
+        } catch (MovieAlreadyFoundException e) {
             e.printStackTrace();
         }*/
 
@@ -103,7 +98,7 @@ public class ApplicationContext implements ApplicationListener<ContextRefreshedE
             System.out.println(movieid1);
             Movie movie= new Movie(movieid1,moviename,moviecast,moviegenre,moviebudget,moviedate);
             movieService.saveMovie(movie);
-        } catch (MovieNotFoundException e) {
+        } catch (MovieAlreadyFoundException e) {
             e.printStackTrace();
         }*/
 

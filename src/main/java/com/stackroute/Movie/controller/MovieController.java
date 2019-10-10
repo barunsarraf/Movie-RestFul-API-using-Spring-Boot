@@ -1,12 +1,10 @@
 package com.stackroute.Movie.controller;
 
-import com.stackroute.Movie.Exception.MovieNotFoundException;
+import com.stackroute.Movie.Exception.MovieAlreadyFoundException;
 import com.stackroute.Movie.model.Movie;
 import com.stackroute.Movie.service.MovieService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,11 +34,11 @@ public class MovieController {
 
 
     @PostMapping("movie")
-    public ResponseEntity<?> savemovie(@RequestBody Movie movie) throws MovieNotFoundException
+    public ResponseEntity<?> savemovie(@RequestBody Movie movie) throws MovieAlreadyFoundException
     {
         ResponseEntity responseEntity;
             movieService.saveMovie(movie);
-            responseEntity= new ResponseEntity<Movie>(movie,HttpStatus.OK);
+            responseEntity= new ResponseEntity<Movie>(movie,HttpStatus.CREATED);
         return responseEntity;
     }
 
@@ -63,14 +61,14 @@ public class MovieController {
 
 
     @PutMapping("movie")
-    public ResponseEntity<?> updatemovie(@RequestBody Movie movie) throws MovieNotFoundException {
+    public ResponseEntity<?> updatemovie(@RequestBody Movie movie) throws MovieAlreadyFoundException {
         ResponseEntity responseEntity;
 
         try{
             Movie updatemovie=movieService.updateMovieusingput(movie);
             responseEntity=new ResponseEntity<Movie>(movie,HttpStatus.OK);
         }
-        catch(MovieNotFoundException e)
+        catch(MovieAlreadyFoundException e)
         {
             responseEntity= new ResponseEntity<Movie>(movie,HttpStatus.CONFLICT);
             throw e;

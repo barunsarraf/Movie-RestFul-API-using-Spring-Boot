@@ -1,6 +1,6 @@
 package com.stackroute.Movie.Initiliazer;
 
-import com.stackroute.Movie.Exception.MovieNotFoundException;
+import com.stackroute.Movie.Exception.MovieAlreadyFoundException;
 import com.stackroute.Movie.model.Movie;
 import com.stackroute.Movie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class CommandLineRunner implements org.springframework.boot.CommandLineRu
             Movie movie= new Movie(2,"CommandLineRunner Mission Impossible","Tom Cruise","Action",new BigDecimal(1000),"Wednesday 2018");
             movieService.saveMovie(movie);
 
-        } catch (MovieNotFoundException e) {
+        } catch (MovieAlreadyFoundException e) {
             e.printStackTrace();
         }
     }

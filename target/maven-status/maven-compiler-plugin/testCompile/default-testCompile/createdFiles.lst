@@ -1,0 +1,4 @@
+com/stackroute/Movie/repository/MovieMongoRepositoryTest.class
+com/stackroute/Movie/SpringBootTestApplicationTests.class
+com/stackroute/Movie/controller/MovieControllerTest.class
+com/stackroute/Movie/service/MovieMongoServiceImplTest.class
